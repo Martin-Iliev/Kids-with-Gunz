@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour
         {
             if (attachedObject != null)
             {
-
                 attachedObject.SetParent(null);
 
                 if (attachedObject.GetComponent<Rigidbody>() != null)
@@ -114,7 +113,6 @@ public class PlayerController : MonoBehaviour
         {
             if (attachedObject != null)
             {
-
                 attachedObject.SetParent(null);
 
                 if (attachedObject.GetComponent<Rigidbody>() != null)
