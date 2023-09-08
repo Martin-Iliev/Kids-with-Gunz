@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -28,6 +29,10 @@ public class PlayerController : MonoBehaviour
     public float throwForce = 1f;
     private float walkingMultiplier = 1f;
 
+    public Object startText;
+
+    private bool cursorVisible = false;
+
     private void OnEnable()
     {
         character = GetComponent<CharacterController>();
@@ -36,7 +41,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        startText.GetComponent<TextController>().ShowText();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 
@@ -72,6 +78,22 @@ public class PlayerController : MonoBehaviour
         }
 
         character.Move(_moveDir * Time.deltaTime);
+
+        //cursor
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(!cursorVisible) 
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (cursorVisible)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
 
         // picking up objects
         RaycastHit hit;
