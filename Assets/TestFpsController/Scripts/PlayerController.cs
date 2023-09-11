@@ -150,7 +150,19 @@ public class PlayerController : MonoBehaviour
     {
         if (attachedObject != null)
         {
-            attachedObject.position = head.transform.position + head.transform.forward * attachedDistance;
+            int mask = 1 << 3;
+            int notmask = ~mask;
+            Debug.Log(notmask);
+            RaycastHit hit2;
+            bool cast2 = Physics.Raycast(head.transform.position, head.transform.forward, out hit2, attachedDistance , notmask);
+            if(cast2)
+            {
+                attachedObject.position = head.transform.position + head.transform.forward * hit2.distance;
+            }
+            else
+            {
+                attachedObject.position = head.transform.position + head.transform.forward * attachedDistance;
+            }
             attachedObject.Rotate(transform.right * Input.mouseScrollDelta.y * 15f, Space.World);
         }
     }
