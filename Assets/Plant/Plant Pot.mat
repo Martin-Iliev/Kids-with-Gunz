@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DoorHandleShader
+  m_Name: Plant Pot
   m_Shader: {fileID: -6465566751694194690, guid: 3d6864d0947463049b3b00c450057f9f,
     type: 3}
   m_Parent: {fileID: 0}
@@ -43,7 +43,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 3e7983b9481c7b840afb894e7f0b68a0, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularMap:
@@ -67,10 +67,10 @@ Material:
     - Vector1_8606F96E: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 1
+    - _Smoothness: 0.5
     - _USE_SCREEN_SPACE: 1
     m_Colors:
-    - _MainColor: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
+    - _MainColor: {r: 0.6320754, g: 0.19742443, b: 0.1633855, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 0, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
