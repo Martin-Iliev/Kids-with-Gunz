@@ -6,6 +6,8 @@ TagManager:
   tags:
   - pickable
   - door
+  - toybox
+  - toy chore
   layers:
   - Default
   - TransparentFX

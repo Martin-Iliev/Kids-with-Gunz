@@ -9,6 +9,7 @@ public class TextController : MonoBehaviour
     public float displayDuration = 4f;
     private float timer = 0f;
     private bool isDisplaying = false;
+    [SerializeField] private bool isTriggerable;
 
     [TextArea]
     public string textContent = "Default Text";
@@ -40,5 +41,15 @@ public class TextController : MonoBehaviour
 
         timer = 0f;
         isDisplaying = true;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (isTriggerable && !isDisplaying)
+        {
+            if (other.CompareTag("Player"))
+            {
+                ShowText();
+            }
+        }
     }
 }

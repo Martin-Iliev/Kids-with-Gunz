@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         startText.GetComponent<TextController>().ShowText();
         Cursor.lockState = CursorLockMode.Locked;
+        cursorVisible = false;
     }
 
 
@@ -84,6 +85,7 @@ public class PlayerController : MonoBehaviour
         {
             if(!cursorVisible) 
             {
+                cursorVisible = true;
                 Cursor.lockState = CursorLockMode.None;
             }
         }
@@ -92,6 +94,7 @@ public class PlayerController : MonoBehaviour
             if (cursorVisible)
             {
                 Cursor.lockState = CursorLockMode.Locked;
+                cursorVisible = false;
             }
         }
 
