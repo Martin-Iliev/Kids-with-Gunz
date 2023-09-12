@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HalftoneBall
+  m_Name: Halftone Mat
   m_Shader: {fileID: -6465566751694194690, guid: 7e5d9acb3509d744eae46a5605f3e7c9,
     type: 3}
   m_Parent: {fileID: 0}
@@ -43,8 +43,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CircleDensity: 30
-    - _FalloffThreshold: 2.2
+    - _CircleDensity: 25
+    - _FalloffThreshold: 1.5
     - _Lit_Threshold: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -53,7 +53,7 @@ Material:
     - _Softness: 0
     - _USE_SCREEN_SPACE: 1
     m_Colors:
-    - _BaseColor: {r: 0.6901961, g: 0.07450981, b: 0.10196079, a: 1}
+    - _BaseColor: {r: 0.7254902, g: 0.49019608, b: 0.25490198, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &6940202837999242747
 MonoBehaviour:
