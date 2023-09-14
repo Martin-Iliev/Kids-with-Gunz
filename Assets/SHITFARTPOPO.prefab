@@ -630,10 +630,8 @@ Transform:
   m_LocalScale: {x: 27, y: 16.402481, z: 16.402481}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5413130929751566431}
+  - {fileID: 2176651893878514840}
   - {fileID: 6736837910052260807}
-  - {fileID: 2672502855476351446}
-  - {fileID: 7070286227271505867}
   m_Father: {fileID: 4731388768279573760}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1535076842472615968
@@ -915,12 +913,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2224453147167383881}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0021486608, y: -0.000836551, z: -0.00087350665, w: 0.99999696}
-  m_LocalPosition: {x: -0.00004620016, y: -0.00085467397, z: 0.0010055309}
-  m_LocalScale: {x: -0.37957388, y: 14.88139, z: 6.3153024}
+  m_LocalRotation: {x: -0.002148661, y: -0.00083652127, z: -0.00087350677, w: 0.999997}
+  m_LocalPosition: {x: -0.00004620016, y: -0.00085467397, z: 0.03130551}
+  m_LocalScale: {x: -0.37957385, y: 14.8813925, z: 6.3153024}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3024753144924917489}
+  m_Children:
+  - {fileID: 2672502855476351446}
+  - {fileID: 7070286227271505867}
+  m_Father: {fileID: 2176651893878514840}
   m_LocalEulerAnglesHint: {x: -0.246, y: -0.096, z: -0.1}
 --- !u!33 &4559175766327228260
 MeshFilter:
@@ -1083,12 +1083,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2338111430375743409}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00018295014, y: -0.004109389, z: 0.026545445}
-  m_LocalScale: {x: 1.0700533, y: 0.18344617, z: 0.18344617}
+  m_LocalRotation: {x: 0.002148661, y: -0.00083652127, z: -0.00087350677, w: 0.999997}
+  m_LocalPosition: {x: -0.0007315187, y: -0.00022605414, z: 0.004041819}
+  m_LocalScale: {x: -2.8186386, y: 0.012327388, z: 0.029047236}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3024753144924917489}
+  m_Father: {fileID: 5413130929751566431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7457433236287041627
 MeshFilter:
@@ -2539,12 +2539,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4902387850505478345}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000080675, y: -0.006999736, z: 0.025987655}
-  m_LocalScale: {x: 0.61373806, y: 1.4773308, z: 0.53976446}
+  m_LocalRotation: {x: 0.002148661, y: -0.00083652127, z: -0.00087350677, w: 0.999997}
+  m_LocalPosition: {x: -0.0004728434, y: -0.0004201285, z: 0.0039515523}
+  m_LocalScale: {x: -1.6166538, y: 0.09927506, z: 0.08546738}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3024753144924917489}
+  m_Father: {fileID: 5413130929751566431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1723484323724970041
 MeshFilter:
@@ -3445,6 +3445,38 @@ MonoBehaviour:
   displayDuration: 8
   isTriggerable: 1
   textContent: Collect all the toys in the toy box.
+--- !u!1 &6028090573824026794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2176651893878514840}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2176651893878514840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6028090573824026794}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: -0.0303}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5413130929751566431}
+  m_Father: {fileID: 3024753144924917489}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6150103422337939589
 GameObject:
   m_ObjectHideFlags: 0
@@ -3900,7 +3932,7 @@ Transform:
   - {fileID: 2516665622808330330}
   - {fileID: 2647874634548103702}
   - {fileID: 7253145262629810589}
-  - {fileID: 218719010443886160}
+  - {fileID: 325300112276101540}
   - {fileID: 415472163083883481}
   - {fileID: 4276289650150453086}
   - {fileID: 8101475532141870656}
@@ -6060,7 +6092,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45a4c51ca7d6fae4d8944e64197a1b27, type: 3}
---- !u!4 &218719010443886160 stripped
+--- !u!4 &325300112276101540 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 45a4c51ca7d6fae4d8944e64197a1b27,
     type: 3}

@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public float throwForce = 1f;
     private float walkingMultiplier = 1f;
 
+    public AudioSource walk;
     public Object startText;
 
     private bool cursorVisible = false;
@@ -44,12 +45,22 @@ public class PlayerController : MonoBehaviour
         startText.GetComponent<TextController>().ShowText();
         Cursor.lockState = CursorLockMode.Locked;
         cursorVisible = false;
+        walk.Play();
+        walk.Pause();
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetAxis("Vertical") != 0f || Input.GetAxis("Horizontal") != 0f)
+        {
+            walk.UnPause();
+        }
+        else
+        {
+            walk.Pause();
+        }
         // Create local variable and initialize it
         // Multiple x and z with the movementspeed
         Vector3 desiredMove = transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal");

@@ -11,6 +11,13 @@ public class DoorScript : MonoBehaviour
     private bool isRotating = false;
     private bool isOpen = false;
 
+    public AudioSource open;
+    public AudioSource close;
+    private void Start()
+    {
+        open.Play();
+        open.Pause();
+    }
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -27,6 +34,7 @@ public class DoorScript : MonoBehaviour
         }
         if (isRotating && !isOpen)
         {
+            open.UnPause();
             float step = rotationSpeed * Time.deltaTime;
 
             Quaternion target = Quaternion.Euler(targetRotation.eulerAngles);
@@ -35,6 +43,8 @@ public class DoorScript : MonoBehaviour
 
             if (transform.rotation == target)
             {
+                open.Play();
+                open.Pause();
                 isRotating = false;
                 isOpen = true;
             }
@@ -48,6 +58,7 @@ public class DoorScript : MonoBehaviour
 
             if (transform.rotation == target)
             {
+                close.Play();
                 isRotating = false;
                 isOpen = false;
             }
