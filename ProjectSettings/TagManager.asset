@@ -8,6 +8,7 @@ TagManager:
   - door
   - toybox
   - toy chore
+  - dishCam
   layers:
   - Default
   - TransparentFX

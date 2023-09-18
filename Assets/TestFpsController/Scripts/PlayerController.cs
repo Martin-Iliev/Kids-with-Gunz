@@ -34,6 +34,13 @@ public class PlayerController : MonoBehaviour
 
     private bool cursorVisible = false;
 
+    [Header("DishWashGame")]
+    [SerializeField]
+    public bool DishGameStart;
+    public Camera playerCam;
+    public Camera dishCam;
+    public GameObject dishAssets;
+
     private void OnEnable()
     {
         character = GetComponent<CharacterController>();
@@ -53,6 +60,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (DishGameStart)
+        {
+            dishAssets.SetActive(true);
+            playerCam.enabled = false;
+            dishCam.enabled = true;
+            DishGameStart = false;
+        }
         if (Input.GetAxis("Vertical") != 0f || Input.GetAxis("Horizontal") != 0f)
         {
             walk.UnPause();
@@ -97,7 +111,7 @@ public class PlayerController : MonoBehaviour
             if(!cursorVisible) 
             {
                 cursorVisible = true;
-                Cursor.lockState = CursorLockMode.None;
+                //Cursor.lockState = CursorLockMode.None;
             }
         }
         if (Input.GetMouseButtonDown(0))
@@ -105,7 +119,7 @@ public class PlayerController : MonoBehaviour
             if (cursorVisible)
             {
                 Cursor.lockState = CursorLockMode.Locked;
-                cursorVisible = false;
+                //cursorVisible = false;
             }
         }
 

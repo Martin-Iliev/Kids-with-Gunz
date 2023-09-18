@@ -23,13 +23,15 @@ public class DoorScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Camera playerCamera = Camera.main;
-
-            Ray ray = playerCamera.ScreenPointToRay(new Vector3(playerCamera.pixelWidth / 2, playerCamera.pixelHeight / 2, 0));
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == gameObject && hit.distance <= interactionDistance && !isRotating)
+            if (playerCamera != null ) 
             {
-                isRotating = true;
+                Ray ray = playerCamera.ScreenPointToRay(new Vector3(playerCamera.pixelWidth / 2, playerCamera.pixelHeight / 2, 0));
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == gameObject && hit.distance <= interactionDistance && !isRotating)
+                {
+                    isRotating = true;
+                }
             }
         }
         if (isRotating && !isOpen)

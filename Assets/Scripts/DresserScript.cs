@@ -19,14 +19,18 @@ public class DresserScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Camera playerCamera = Camera.main;
+            if (playerCamera != null ) 
+            { 
+                Ray ray = playerCamera.ScreenPointToRay(new Vector3(playerCamera.pixelWidth / 2, playerCamera.pixelHeight / 2, 0));
+                RaycastHit hit;
 
-            Ray ray = playerCamera.ScreenPointToRay(new Vector3(playerCamera.pixelWidth / 2, playerCamera.pixelHeight / 2, 0));
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == gameObject && hit.distance <= interactionDistance && !isRotating)
-            {
-                isRotating = true;
+                if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == gameObject && hit.distance <= interactionDistance && !isRotating)
+                {
+                    isRotating = true;
+                }
             }
+            
+            
         }
         
         if (isRotating && !isOpen)
