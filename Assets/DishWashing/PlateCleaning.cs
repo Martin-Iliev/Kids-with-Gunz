@@ -14,6 +14,7 @@ public class PlateCleaning : MonoBehaviour
 
     public Camera player;
     public Camera dishCam;
+    public GameObject dishAssets;
 
     float mouseVeclocity;
     float oldMouseX;
@@ -55,5 +56,6 @@ public class PlateCleaning : MonoBehaviour
     {
         player.enabled = true;
         dishCam.enabled = false;
+        dishAssets.SetActive(false);
     }
 }

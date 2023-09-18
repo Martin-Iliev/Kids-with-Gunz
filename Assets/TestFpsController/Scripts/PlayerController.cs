@@ -62,10 +62,10 @@ public class PlayerController : MonoBehaviour
     {
         if (DishGameStart)
         {
-            dishAssets.SetActive(true);
             playerCam.enabled = false;
             dishCam.enabled = true;
             DishGameStart = false;
+            dishAssets.SetActive(true);
         }
         if (Input.GetAxis("Vertical") != 0f || Input.GetAxis("Horizontal") != 0f)
         {
