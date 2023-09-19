@@ -70,7 +70,7 @@ Material:
     - _Smoothness: 0.5
     - _USE_SCREEN_SPACE: 1
     m_Colors:
-    - _MainColor: {r: 0.5283019, g: 0.26381865, b: 0.13157706, a: 1}
+    - _MainColor: {r: 0.5283019, g: 0.29411766, b: 0.1764706, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 0, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}

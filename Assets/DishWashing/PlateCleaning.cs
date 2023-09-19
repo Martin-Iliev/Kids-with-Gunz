@@ -44,7 +44,7 @@ public class PlateCleaning : MonoBehaviour
                 transparency -= cleaningSpeed;
             }
 
-            if (transparency <= 0)
+            if (transparency <= 0.01f)
             {
                 Completed();
             }
