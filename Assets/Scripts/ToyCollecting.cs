@@ -16,7 +16,7 @@ public class ToyCollecting : MonoBehaviour
     {
         if(toys >= toyAmount)
         {
-            textFinish.GetComponent<TextController>().ShowText();
+            //textFinish.GetComponent<TextController>().StartCoroutine("ShowText");
         }
     }
 }

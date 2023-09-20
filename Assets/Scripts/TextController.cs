@@ -1,16 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class TextController : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI popupText;
+    public MouseLook stopLook;
+    public PlayerController stopMove;
+    public RawImage textBox;
+    public float delay = 0.1f;
     public float displayDuration = 4f;
     private float timer = 0f;
     private bool isDisplaying = false;
+    public List<string> stringList = new List<string>();
     [SerializeField] private bool isTriggerable;
+    [SerializeField] private bool firstText;
+    private int currentIndex = 0;
     private bool isShown = false;
+    public string fullText;
+    private string currentText = "";
 
     [TextArea]
     public string textContent = "Default Text";
@@ -18,128 +28,66 @@ public class TextController : MonoBehaviour
     private void Start()
     {
         popupText.gameObject.SetActive(false);
-    }
-
-    private void Update()
-    {
-        if (isDisplaying)
-        {
-            timer += Time.deltaTime;
-
-            if (timer >= displayDuration)
-            {
-                popupText.gameObject.SetActive(false);
-                isDisplaying = false;
-                timer = 0f;
-            }
+        if (firstText)
+        { 
+            StartCoroutine(ShowText(stringList[currentIndex]));
         }
     }
-    public void ShowText()
+    public IEnumerator ShowText(string text)
     {
-        if (!isShown)
+        for (int i = 0; i <= text.Length; i++)
         {
-            popupText.text = textContent;
-
             popupText.gameObject.SetActive(true);
-
-            timer = 0f;
             isDisplaying = true;
+            currentText = text.Substring(0, i);
+            popupText.text = currentText;
+            stopLook.enabled = false;
+            stopMove._MovementSpeed = 0f;
+            yield return new WaitForSeconds(delay);
+        }
+    }
+    private void Update()
+    {
+        if (isDisplaying && popupText.text == stringList[currentIndex])
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (currentIndex == stringList.Count - 1 && !firstText) 
+                {
+                    enabled = false;
+                    popupText.gameObject.SetActive(false);
+                    stopLook.enabled = true;
+                    stopMove._MovementSpeed = 3f;
+                    textBox.enabled = false;
+                }
+                if (currentIndex == stringList.Count - 1 && firstText)
+                {
+                    enabled = false;
+                    popupText.gameObject.SetActive(false);
+                    stopLook.enabled = true;
+                    stopMove._MovementSpeed = 3f;
+                    stopMove.DishGameStart = true;
+                    textBox.enabled = false;
+                }
+                popupText.gameObject.SetActive(false);
+                isDisplaying = false;
+                if (currentIndex != stringList.Count - 1) 
+                {
+                    currentIndex++;
+                    StartCoroutine(ShowText(stringList[currentIndex]));
+                }
+            }
         }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (isTriggerable && !isDisplaying)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag("toybox"))
             {
-                ShowText();
+                StartCoroutine(ShowText("Collect all the toys in the toybox!"));
                 isShown = true;
             }
-        }
-    }
-    public void Text1()
-    {
-        if (!isShown)
-        {
-            timer = 0f;
-            popupText.text = "Mom I'm hooommmeeee!";
-
-            popupText.gameObject.SetActive(true);
-            
-            isDisplaying = true;
-            displayDuration = 2.5f;
-        }
-    }
-    public void Text2()
-    {
-        if (!isShown)
-        {
-            timer = 0f;
-            popupText.text = "How was school?";
-
-            popupText.gameObject.SetActive(true);
-            isDisplaying = true;
-            displayDuration = 1.5f;
-        }
-    }
-    public void Text3()
-    {
-        if (!isShown)
-        {
-            timer = 0f;
-            popupText.text = "It was soooo boring, is it okay if Faith stays over for dinner?";
-
-            popupText.gameObject.SetActive(true);
-            isDisplaying = true;
-            displayDuration = 4.9f;
-        }
-    }
-    public void Text4()
-    {
-        if (!isShown)
-        {
-            timer = 0f;
-            popupText.text = "Yes honey, dinner will be served soon I just need to finish some chores.";
-
-            popupText.gameObject.SetActive(true);
-            isDisplaying = true;
-            displayDuration = 3.9f;
-        }
-    }
-    public void Text5()
-    {
-        if (!isShown)
-        {
-            timer = 0f;
-            popupText.text = "Ok! Can we watch TV in your room?";
-
-            popupText.gameObject.SetActive(true);
-            isDisplaying = true;
-            displayDuration = 2.9f;
-        }
-    }
-    public void Text6()
-    {
-        if (!isShown)
-        {
-            timer = 0f;
-            popupText.text = "Sure. But take your shoes off first!";
-
-            popupText.gameObject.SetActive(true);
-            isDisplaying = true;
-            displayDuration = 2.9f;
-        }
-    }
-    public void Text7()
-    {
-        if (!isShown)
-        {
-            timer = 0f;
-            popupText.text = "Yheeessssss mommmm";
-
-            popupText.gameObject.SetActive(true);
-            isDisplaying = true;
-            displayDuration = 1.5f;
         }
     }
 }

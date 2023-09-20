@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController character;
 
     [Header("Movement Speed")]
-    [SerializeField] private float _MovementSpeed = 3f;
+    [SerializeField] public float _MovementSpeed = 3f;
     [Header("Gravity")]
     [SerializeField] private float _stickForce = -9.8f;
     [Header("Jump Force")]
@@ -49,8 +49,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startText.GetComponent<TextController>().ShowText();
-        Cursor.lockState = CursorLockMode.Locked;
         cursorVisible = false;
         walk.Play();
         walk.Pause();
@@ -118,7 +116,7 @@ public class PlayerController : MonoBehaviour
         {
             if (cursorVisible)
             {
-                Cursor.lockState = CursorLockMode.Locked;
+                //Cursor.lockState = CursorLockMode.Locked;
                 //cursorVisible = false;
             }
         }
