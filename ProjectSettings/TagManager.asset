@@ -10,6 +10,10 @@ TagManager:
   - toy chore
   - dishCam
   - kidKitchen
+  - Ground
+  - girlToy
+  - boyToy
+  - girlShooting
   layers:
   - Default
   - TransparentFX

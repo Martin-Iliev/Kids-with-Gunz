@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DoorScript : MonoBehaviour
@@ -10,6 +11,8 @@ public class DoorScript : MonoBehaviour
     private float interactionDistance = 3f;
     private bool isRotating = false;
     private bool isOpen = false;
+    public bool finalDoor = false;
+    public Object KidShooting;
 
     public AudioSource open;
     public AudioSource close;
@@ -20,6 +23,10 @@ public class DoorScript : MonoBehaviour
     }
     private void Update()
     {
+        if (finalDoor && KidShooting != null && isOpen)
+        {
+            KidShooting.GetComponent<KidShooting>().isSwitching = true;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             Camera playerCamera = Camera.main;

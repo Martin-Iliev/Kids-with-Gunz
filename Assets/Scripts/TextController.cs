@@ -13,11 +13,15 @@ public class TextController : MonoBehaviour
     public RawImage textBox;
     public RawImage Mom;
     public RawImage KidKitchen;
+    public RawImage GirlToy;
+    public RawImage BoyToy;
     public RawImage KidComingHome;
     public float delay = 0.1f;
     private bool isDisplaying = false;
     public List<string> stringListStart = new List<string>();
     public List<string> stringListKidKitchen = new List<string>();
+    public List<string> stringListGirlToy = new List<string>();
+    public List<string> stringListBoyToy = new List<string>();
     [SerializeField] private bool isTriggerable;
     [SerializeField] private bool firstText;
     private List<string> whatText;
@@ -25,6 +29,8 @@ public class TextController : MonoBehaviour
     private int currentIndex = 0;
     private string kidName;
     private bool talkedKitchen = false;
+    private bool talkedGirlToy = false;
+    private bool talkedBoyToy = false;
     public string fullText;
     private string currentText = "";
     public float interactionDistance = 5f;
@@ -37,6 +43,8 @@ public class TextController : MonoBehaviour
     {
         popupText.gameObject.SetActive(false);
         KidKitchen.enabled = false;
+        GirlToy.enabled = false;
+        BoyToy.enabled = false;
         if (firstText)
         { 
             StartCoroutine(ShowText(stringListStart[currentIndex]));
@@ -90,6 +98,32 @@ public class TextController : MonoBehaviour
                         Mom.enabled = false;
                     }
                 }
+                if (talkedGirlToy)
+                {
+                    if (Name.text == "Mom")
+                    {
+                        Mom.enabled = true;
+                        GirlToy.enabled = false;
+                    }
+                    if (Name.text == "Sara")
+                    {
+                        GirlToy.enabled = true;
+                        Mom.enabled = false;
+                    }
+                }
+                if (talkedBoyToy)
+                {
+                    if (Name.text == "Mom")
+                    {
+                        Mom.enabled = true;
+                        BoyToy.enabled = false;
+                    }
+                    if (Name.text == "Timmy")
+                    {
+                        BoyToy.enabled = true;
+                        Mom.enabled = false;
+                    }
+                }
                 if (whatText == stringListKidKitchen)
                 {
                     if (Name.text == "Mom")
@@ -113,6 +147,9 @@ public class TextController : MonoBehaviour
                     isDisplaying = false;
                     Mom.enabled = false;
                     KidKitchen.enabled = false;
+                    KidComingHome.enabled = false;
+                    GirlToy.enabled = false;
+                    BoyToy.enabled = false;
                 }
                 if (currentIndex == whatText.Count - 1 && firstText)
                 {
@@ -124,6 +161,9 @@ public class TextController : MonoBehaviour
                     textBox.enabled = false;
                     Mom.enabled = false;
                     KidComingHome.enabled = false;
+                    KidKitchen.enabled = false;
+                    GirlToy.enabled = false;
+                    BoyToy.enabled = false;
                     isDisplaying = false;
                     firstText = false;
                 }
@@ -155,7 +195,28 @@ public class TextController : MonoBehaviour
                         KidKitchen.enabled = true;
                         Name.text = kidName;
                         StartCoroutine(ShowText(whatText[currentIndex]));
-                        Debug.Log("billy text");
+                    }
+                    if (hit.transform.CompareTag("girlToy") && !talkedGirlToy)
+                    {
+                        talkedGirlToy = true;
+                        currentIndex = 0;
+                        firstText = false;
+                        whatText = stringListGirlToy;
+                        kidName = "Sara";
+                        GirlToy.enabled = true;
+                        Name.text = kidName;
+                        StartCoroutine(ShowText(whatText[currentIndex]));
+                    }
+                    if (hit.transform.CompareTag("boyToy") && !talkedBoyToy)
+                    {
+                        talkedBoyToy = true;
+                        currentIndex = 0;
+                        firstText = false;
+                        whatText = stringListBoyToy;
+                        kidName = "Timmy";
+                        BoyToy.enabled = true;
+                        Name.text = kidName;
+                        StartCoroutine(ShowText(whatText[currentIndex]));
                     }
                 }
             }
