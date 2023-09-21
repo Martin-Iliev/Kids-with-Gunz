@@ -105,8 +105,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   postExposure:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: -0.55
   contrast:
     m_OverrideState: 0
     m_Value: 0
@@ -119,6 +119,52 @@ MonoBehaviour:
   saturation:
     m_OverrideState: 1
     m_Value: -15
+--- !u!114 &-1831152883555492966
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
+  m_Name: DepthOfField
+  m_EditorClassIdentifier: 
+  active: 1
+  mode:
+    m_OverrideState: 1
+    m_Value: 1
+  gaussianStart:
+    m_OverrideState: 1
+    m_Value: 10
+  gaussianEnd:
+    m_OverrideState: 1
+    m_Value: 25
+  gaussianMaxRadius:
+    m_OverrideState: 1
+    m_Value: 0.5
+  highQualitySampling:
+    m_OverrideState: 1
+    m_Value: 1
+  focusDistance:
+    m_OverrideState: 1
+    m_Value: 10
+  aperture:
+    m_OverrideState: 1
+    m_Value: 5.6
+  focalLength:
+    m_OverrideState: 1
+    m_Value: 50
+  bladeCount:
+    m_OverrideState: 1
+    m_Value: 5
+  bladeCurvature:
+    m_OverrideState: 1
+    m_Value: 1
+  bladeRotation:
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +184,7 @@ MonoBehaviour:
   - {fileID: -5605563379071526082}
   - {fileID: -3862894593546031294}
   - {fileID: 3969170462285671991}
+  - {fileID: -1831152883555492966}
 --- !u!114 &849379129802519247
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -193,10 +240,10 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {r: 0.5019608, g: 0.42666668, b: 0.48313728, a: 1}
+    m_Value: {r: 0.5019608, g: 0.3664314, b: 0.46629512, a: 1}
   highlights:
     m_OverrideState: 1
-    m_Value: {r: 0.5019608, g: 0.45725492, b: 0.42666668, a: 1}
+    m_Value: {r: 0.4433962, g: 0.3305437, b: 0.24846919, a: 1}
   balance:
     m_OverrideState: 1
     m_Value: 0

@@ -15,8 +15,6 @@ public class TextController : MonoBehaviour
     public RawImage KidKitchen;
     public RawImage KidComingHome;
     public float delay = 0.1f;
-    public float displayDuration = 4f;
-    private float timer = 0f;
     private bool isDisplaying = false;
     public List<string> stringListStart = new List<string>();
     public List<string> stringListKidKitchen = new List<string>();
@@ -38,6 +36,7 @@ public class TextController : MonoBehaviour
     private void Start()
     {
         popupText.gameObject.SetActive(false);
+        KidKitchen.enabled = false;
         if (firstText)
         { 
             StartCoroutine(ShowText(stringListStart[currentIndex]));
@@ -72,7 +71,7 @@ public class TextController : MonoBehaviour
             {
                 if (Name.text == "Mom")
                 {
-                    Name.text = kidName; 
+                    Name.text = kidName;
                 }
                 else if (Name.text == kidName)
                 {
@@ -91,6 +90,19 @@ public class TextController : MonoBehaviour
                         Mom.enabled = false;
                     }
                 }
+                if (whatText == stringListKidKitchen)
+                {
+                    if (Name.text == "Mom")
+                    {
+                        KidKitchen.enabled = false;
+                        Mom.enabled = true;
+                    }
+                    else if (Name.text == kidName)
+                    {
+                        KidKitchen.enabled = true;
+                        Mom.enabled = false;
+                    }
+                }
                 if (currentIndex == whatText.Count - 1 && !firstText) 
                 {
                     popupText.gameObject.SetActive(false);
@@ -99,6 +111,8 @@ public class TextController : MonoBehaviour
                     textBox.enabled = false;
                     Name.enabled = false;
                     isDisplaying = false;
+                    Mom.enabled = false;
+                    KidKitchen.enabled = false;
                 }
                 if (currentIndex == whatText.Count - 1 && firstText)
                 {
@@ -111,6 +125,7 @@ public class TextController : MonoBehaviour
                     Mom.enabled = false;
                     KidComingHome.enabled = false;
                     isDisplaying = false;
+                    firstText = false;
                 }
                 popupText.gameObject.SetActive(false);
                 
@@ -137,6 +152,7 @@ public class TextController : MonoBehaviour
                         firstText = false;
                         whatText = stringListKidKitchen;
                         kidName = "Billy";
+                        KidKitchen.enabled = true;
                         Name.text = kidName;
                         StartCoroutine(ShowText(whatText[currentIndex]));
                         Debug.Log("billy text");

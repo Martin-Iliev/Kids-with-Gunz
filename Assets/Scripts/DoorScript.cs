@@ -7,7 +7,7 @@ public class DoorScript : MonoBehaviour
     public Transform targetRotation;
     public Transform oldRotation;
     public float rotationSpeed = 90f;
-    public float interactionDistance = 15f;
+    private float interactionDistance = 3f;
     private bool isRotating = false;
     private bool isOpen = false;
 

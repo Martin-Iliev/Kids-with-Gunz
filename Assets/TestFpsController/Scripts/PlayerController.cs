@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
             if (cursorVisible)
             {
                 //Cursor.lockState = CursorLockMode.Locked;
-                //cursorVisible = false;
+                cursorVisible = false;
             }
         }
 
