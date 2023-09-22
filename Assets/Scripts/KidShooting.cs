@@ -16,6 +16,9 @@ public class KidShooting : MonoBehaviour
 
     void Start()
     {
+        gunshot.Play();
+        gunshot.Pause();
+        black.enabled = false;
         objectRenderer = GetComponent<Renderer>();
         if (materials.Length > 0 && objectRenderer != null)
         {
@@ -27,30 +30,33 @@ public class KidShooting : MonoBehaviour
     {
         if (isSwitching && !lastMaterialChanged)
         {
-            if (Time.time >= 0.75f * (currentMaterialIndex + 1))
-            {
-                currentMaterialIndex++;
-
-                if (currentMaterialIndex < materials.Length)
-                {
-                    objectRenderer.material = materials[currentMaterialIndex];
-                }
-                else
-                {
-                    lastMaterialChanged = true;
-                }
-            }
+            StartCoroutine(WaitForTime(1.5f));
+        }
+        if (lastMaterialChanged)
+        {
+            gunshot.UnPause();
+            black.enabled = true;
+            StartCoroutine(ChangeScene());
         }
     }
-    private IEnumerator WaitForOneSecond()
+    private IEnumerator WaitForTime(float time)
     {
-        yield return new WaitForSeconds(1.0f);
-        SceneManager.LoadScene("PSA");
+        yield return new WaitForSeconds(time);
+        Debug.Log("material changed");
+        currentMaterialIndex++;
+
+        if (currentMaterialIndex < materials.Length)
+        {
+            objectRenderer.material = materials[currentMaterialIndex];
+        }
+        else
+        {
+            lastMaterialChanged = true;
+        }
     }
-    public void StartMaterialSwitch()
+    private IEnumerator ChangeScene()
     {
-        gunshot.Play();
-        black.enabled = true;
-        StartCoroutine(WaitForOneSecond());
+        yield return new WaitForSeconds(3.0f);
+        SceneManager.LoadScene("PSA");
     }
 }

@@ -89,10 +89,10 @@ public class PlayerController : MonoBehaviour
 
         // If the spacebar is pressed AND we are on the ground
         // set the y pos with the jump amount
-        if (Input.GetKeyDown("space") && character.isGrounded)
-        {
-            _moveDir.y = _JumpHeight;
-        }
+        //if (Input.GetKeyDown("space") && character.isGrounded)
+        //{
+        //    _moveDir.y = _JumpHeight;
+        //}
 
         // if the character is not grounded
         // Apply gravity

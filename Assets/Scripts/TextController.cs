@@ -28,9 +28,9 @@ public class TextController : MonoBehaviour
     [SerializeField] TextMeshProUGUI Name;
     private int currentIndex = 0;
     private string kidName;
-    private bool talkedKitchen = false;
-    private bool talkedGirlToy = false;
-    private bool talkedBoyToy = false;
+    public bool talkedKitchen = false;
+    public bool talkedGirlToy = false;
+    public bool talkedBoyToy = false;
     public string fullText;
     private string currentText = "";
     public float interactionDistance = 5f;

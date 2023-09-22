@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DoorScript : MonoBehaviour
 {
@@ -13,19 +15,25 @@ public class DoorScript : MonoBehaviour
     private bool isOpen = false;
     public bool finalDoor = false;
     public Object KidShooting;
+    public Object textCont;
+    public TextMeshProUGUI stopText;
 
     public AudioSource open;
     public AudioSource close;
     private void Start()
     {
+        if (stopText != null) { stopText.enabled = false; }
         open.Play();
         open.Pause();
     }
     private void Update()
     {
-        if (finalDoor && KidShooting != null && isOpen)
+        if (textCont != null)
         {
-            KidShooting.GetComponent<KidShooting>().isSwitching = true;
+            if (finalDoor && isOpen)
+            {
+                KidShooting.GetComponent<KidShooting>().isSwitching = true;
+            }
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -37,7 +45,17 @@ public class DoorScript : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == gameObject && hit.distance <= interactionDistance && !isRotating)
                 {
-                    isRotating = true;
+                    if (!finalDoor) { isRotating = true; }
+                    if (textCont != null) { 
+                        if(finalDoor && !textCont.GetComponent<TextController>().talkedBoyToy || !textCont.GetComponent<TextController>().talkedGirlToy || !textCont.GetComponent<TextController>().talkedKitchen)
+                        {
+                            StartCoroutine(DoorText());
+                        }
+                    }
+                    if (finalDoor && textCont.GetComponent<TextController>().talkedBoyToy && textCont.GetComponent<TextController>().talkedGirlToy && textCont.GetComponent<TextController>().talkedKitchen)
+                    {
+                        isRotating = true;
+                    }
                 }
             }
         }
@@ -72,5 +90,11 @@ public class DoorScript : MonoBehaviour
                 isOpen = false;
             }
         }
+    }
+    private IEnumerator DoorText()
+    {
+        stopText.enabled = true;
+        yield return new WaitForSeconds(5.0f);
+        stopText.enabled = false;
     }
 }
